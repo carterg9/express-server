@@ -20,10 +20,6 @@ app.get("/", (req, res) => {
     `);
 });
 
-app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server listening on port ${PORT}`);
-});
-
 app.get('/api/getName', (req, res) => {
     res.set('Acess-Control-Allow-Origin', '*'); //sends header allows browser to do something with response
     res.json({ name: 'Carter Gs Website' });    //sends json
@@ -33,3 +29,8 @@ app.get('/api/getImage', (req, res) => {
     res.set('Acesss-Control-Allow-Origin', '*');
     res.sendFile('jp.jpg');
 });
+
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server listening on port ${PORT}`);
+});
+
