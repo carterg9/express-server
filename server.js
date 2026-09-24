@@ -20,14 +20,15 @@ app.get("/", (req, res) => {
     `);
 });
 
+
 app.get('/api/getName', (req, res) => {
-    res.send('Acess-Control-Allow-Origin', '*'); //sends header allows browser to do something with response
-    res.json({ name: 'Carter Gs Website' });    //sends json
+    res.set('Access-Control-Allow-Origin', '*');
+    res.json({ name: 'Carter Gs Website' });
 });
 
 app.get('/api/getImage', (req, res) => {
-    res.send('Acesss-Control-Allow-Origin', '*');
-    res.sendFile('jp.jpg');
+    res.set('Access-Control-Allow-Origin', '*');
+    res.sendFile(path.join(__dirname, 'jp.jpg'));
 });
 
 app.listen(PORT, "0.0.0.0", () => {
