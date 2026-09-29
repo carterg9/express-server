@@ -1,0 +1,47 @@
+const http = require("http");
+const fs = require("fs");
+const path = require("path");
+
+const hostname = "127.0.0.1";
+const port = 3000;
+
+var mimeLookup = {
+    ".html": "text/html",
+    ".js": "text/javascript",
+    "jpg": "image/jpeg"
+};
+
+function send404(response){
+    response.writeHead(404, { 'Content-Type': 'text/html' });
+    response.end(`<h1>Error 404: Not found</h1>`);
+    
+}
+
+const server = http.createServer((req, res) => {
+
+    let file_url = (req.url === "/") ? "input.html" : decode(URI(req.url));
+    let filepath = path.join(__dirname, file_url);
+
+    if(!fs.existsSync(filepath)) {
+        send404(res)
+        return
+    }
+
+    let file_ext = path.extname(filepath);
+    let mimeType = mimeLookup[file_ext];
+
+    if(!mimeType) {
+        send404(res)
+        return
+    }
+
+    res.writeHead(200, { 'Content-Type': mimeType });
+    fs.createReadStream(filepath).pipe(res);
+
+});
+
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
+
+//find a way to make only this run
