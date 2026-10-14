@@ -56,7 +56,7 @@ app.get("/", (req, res) => {
     <div id="MainContent">
 		<h1>  Welcome to Cdeazy  </h1>
 			<h2> The new and upcoming music rating platform! </h2>
-            <p> Please be patient with development! I'm Still working on it! </p>
+            <p> Please be patient with development! I'm Still working on it! test</p>
 				
     </div>
 </body>
