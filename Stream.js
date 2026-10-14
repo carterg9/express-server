@@ -66,12 +66,12 @@ app.get("/", (req, res) => {
 
 app.get('/api/getName', (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');
-    res.json({ name: 'Carter Gs Website' });
+    res.json({ name: 'Cdeazy - The Music Rating Platform' });
 });
 
 app.get('/api/getImage', (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');
-    res.sendFile(__dirname + '/john.png');
+    res.sendFile(__dirname + '/Background.jpg');
 });
 
 
